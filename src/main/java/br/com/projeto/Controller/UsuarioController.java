@@ -27,6 +27,11 @@ public class UsuarioController {
 	   public String homeApp() {
 		   return "index";
 	   }
+	@GetMapping("/cadastro")
+	   public String Cadastro() {
+		   return "cadastro";
+	   }
+	
 	@GetMapping("/Usuario")
 	public ResponseEntity<List<Usuario>> getAll(){
 		List<Usuario> list = (List<Usuario>)dao.findAll();
@@ -47,11 +52,11 @@ public class UsuarioController {
         return ResponseEntity.ok(listId);
     }
 
-	@PostMapping("/novousario")
+	@PostMapping("/novousuario")
     public ResponseEntity<Usuario> addUsuario(@RequestBody Usuario objeto){
        try {
         	dao.save(objeto);
-        	return ResponseEntity.status(403).build();
+            return ResponseEntity.ok(objeto);
         }catch(Exception e) {
         	e.printStackTrace();
         	return ResponseEntity.status(403).build();

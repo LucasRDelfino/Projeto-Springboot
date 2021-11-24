@@ -1,0 +1,57 @@
+body{
+    background-color: white; 
+ }
+ .form{
+     width: 100px;
+     margin: auto;
+     padding-top: 40px;
+ }
+ 
+ .card{
+     box-shadow: 1px 1px 5px #ccc;
+     background-color: white;
+     padding : 30px;
+     border-radius: 5px;
+ }
+ 
+ .card-top{
+     text-align: center;
+ }
+ .card-group{
+    margin-bottom: 20px;
+ 
+ }
+ .card-group > label {
+     width: 100%;
+     color: black;
+     display: block;
+ }
+ 
+ .card-group > button {
+     background-color: purple;
+     width: 100%;
+     border-radius: 30px;
+     padding: 15px;
+     color: white;
+     border:0px;
+     outline: 0;
+     background-image: linear-gradient(to right,purple,purple);
+ }
+ 
+ .card-group > input {
+     border-radius: 5px;
+     outline: 0;
+     width: 100%;
+     height: 30px;
+     padding: 5px;
+ }
+ 
+ .imglogin{
+     width: 200px;
+     border-radius: 50%;
+     
+ }
+ 
+ .tittle {
+     color : purple;
+ }

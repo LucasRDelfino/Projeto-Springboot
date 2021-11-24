@@ -12,7 +12,7 @@ function logar(){
         }
     }
 
-    fetch("http://localhost:8081/login", cabecalho)
+    fetch("http://localhost:8081/cadastro", cabecalho)
         .then(res => res.json())
         .then(res => {
             localStorage.setItem("logado",JSON.stringify(res));
