@@ -23,7 +23,7 @@ public class UsuarioController {
 	@Autowired
 	private UsuarioDAO dao;
 	
-	@GetMapping("/ble")
+	@GetMapping("/index")
 	   public String homeApp() {
 		   return "index";
 	   }
@@ -61,14 +61,16 @@ public class UsuarioController {
     
 
    @PostMapping("/login")
-   public ResponseEntity<Usuario> logar(@RequestBody Usuario objeto){
+   public ResponseEntity<Usuario> getAllByEmailAndSenha(@RequestBody Usuario objeto){
+	   System.out.println(objeto.getEmail());
+	   System.out.println(objeto.getSenha());
 	   Usuario resposta = dao.findByEmailAndSenha(objeto.getEmail(),objeto.getSenha());
-	   
-	   if (resposta==null) {
-		   return ResponseEntity.status(404).build();
-	   }
+	   System.out.println(resposta);
+//	   if (resposta==null) {
+//		   return ResponseEntity.status(404).build();
+//	   }
    
-   return ResponseEntity.ok(objeto);
+	   return ResponseEntity.ok(resposta);
 }	
   
 }

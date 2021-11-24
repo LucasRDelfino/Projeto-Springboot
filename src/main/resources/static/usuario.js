@@ -12,11 +12,15 @@ function logar(){
         }
     }
 
-    fetch("http://localhost:8080/ble", cabecalho)
+    fetch("http://localhost:8081/login", cabecalho)
         .then(res => res.json())
         .then(res => {
             localStorage.setItem("logado",JSON.stringify(res));
-            window.location="index.html";
+                      //window.location="index";
+			document.getElementById("id").innerText = res.id
+			document.getElementById("nome").innerText = res.nome
+			document.getElementById("senha").innerText = res.senha
+			document.getElementById("email").innerText = res.email
         })
         .catch(err => {
             window.alert("Deu ruim");
