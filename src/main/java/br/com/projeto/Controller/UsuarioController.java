@@ -42,15 +42,6 @@ public class UsuarioController {
 		
 		return ResponseEntity.ok(list);
 	}
-	
-	@GetMapping("/lucas{userId}")
-    public ResponseEntity<Optional<Usuario>> getAllById(@PathVariable("userId") int id){
-        Optional<Usuario> listId = dao.findById(id);
-
-        if(listId.isEmpty()) { return ResponseEntity.status(404).build(); }
-
-        return ResponseEntity.ok(listId);
-    }
 
 	@PostMapping("/novousuario")
     public ResponseEntity<Usuario> addUsuario(@RequestBody Usuario objeto){
@@ -62,7 +53,14 @@ public class UsuarioController {
         	return ResponseEntity.status(403).build();
         }
 
-	}   
+	}
+	
+	@PostMapping("/remover/")
+	public ResponseEntity<Usuario> deleteById(@RequestBody Usuario usuario) {
+		Usuario Usuario = dao.findById(usuario.getId());
+		dao.delete(Usuario);
+		return ResponseEntity.ok(Usuario);
+	}
     
 
    @PostMapping("/login")
