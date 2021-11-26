@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.servlet.ModelAndView;
 
 import java.util.List;
 import java.util.Optional;
@@ -31,6 +32,10 @@ public class UsuarioController {
 	   public String Cadastro() {
 		   return "cadastro";
 	   }
+	@GetMapping("/atualizar")
+	   public String Atualizar() {
+		   return "update";
+	   }
 	
 	@GetMapping("/Usuario")
 	public ResponseEntity<List<Usuario>> getAll(){
@@ -46,6 +51,7 @@ public class UsuarioController {
 	@PostMapping("/novousuario")
     public ResponseEntity<Usuario> addUsuario(@RequestBody Usuario objeto){
        try {
+    	   System.out.println(objeto);
         	dao.save(objeto);
             return ResponseEntity.ok(objeto);
         }catch(Exception e) {
@@ -60,6 +66,17 @@ public class UsuarioController {
 		Usuario Usuario = dao.findById(usuario.getId());
 		dao.delete(Usuario);
 		return ResponseEntity.ok(Usuario);
+	}
+	
+	@RequestMapping("/indexUpdate/{userId}")
+	public ModelAndView index(@PathVariable("userId") int id) {
+		ModelAndView mv = new ModelAndView("indexUpdate");
+		Iterable<Usuario> itens = dao.findAll();
+		mv.addObject("itens", itens);
+		Usuario item = dao.findById(id);
+		mv.addObject("itens", itens);
+		mv.addObject("item", item);
+		return mv;
 	}
     
 
